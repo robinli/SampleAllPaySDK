@@ -78,7 +78,7 @@ namespace AllpayWeb.Controllers
                     szHtml = String.Join("\\r\\n", enErrors);
                 }
             }
-            return View(szHtml);
+            return Content(szHtml);
         }
 
     }
