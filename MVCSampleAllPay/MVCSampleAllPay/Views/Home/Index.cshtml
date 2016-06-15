@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>歐付寶金流SDK</h1>
+    <p class="lead">
+
+信用卡測試卡號 	4311-9522-2222-2222<br />
+信用卡測試安全碼 	222<br />
+信用卡測試有效年月 	請設定大於測試時間的年月。因為系統會判斷有效年月是否已過期，已過期則會回應刷卡失敗。<br />
+
+    </p>
+
+    @Html.ActionLink("Pay 進行付款", "Pay", "Home", new { @class = "btn btn-primary btn-lg" })
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            歐付寶全方位金流SDK技術文件.pdf 
+        </p>
+        <p><a class="btn btn-default" href="https://github.com/allpay/.Net/blob/master/AioSDK/%E6%AD%90%E4%BB%98%E5%AF%B6%E5%85%A8%E6%96%B9%E4%BD%8D%E9%87%91%E6%B5%81SDK%E6%8A%80%E8%A1%93%E6%96%87%E4%BB%B6.pdf">Learn more &raquo;</a></p>
+    </div>
+    @*<div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>*@
+</div>
