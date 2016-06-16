@@ -27,8 +27,13 @@ namespace AllpayWeb.Controllers
 
             return View();
         }
-
         public ActionResult Pay()
+        {
+            string result = ProcessPayment();
+            return Content(result);
+        }
+
+        public string ProcessPayment()
         {
             List<string> enErrors = new List<string>();
             string szHtml = String.Empty;
@@ -44,7 +49,8 @@ namespace AllpayWeb.Controllers
                     oPayment.MerchantID = "2000132";
 
                     /* 基本參數 */
-                    oPayment.Send.ReturnURL = "http://yourcompany.com.tw/AllPayPaymentCallBack.aspx";
+                    string hostname = this.Request.Url.Authority;
+                    oPayment.Send.ReturnURL = $"http://{hostname}/Pay/AllPayPayment";
                     oPayment.Send.MerchantTradeNo = "001";
                     oPayment.Send.MerchantTradeDate = DateTime.Now;
                     oPayment.Send.TotalAmount = 1;
@@ -78,8 +84,9 @@ namespace AllpayWeb.Controllers
                     szHtml = String.Join("\\r\\n", enErrors);
                 }
             }
-            return Content(szHtml);
+            return szHtml;
         }
+
 
     }
 }
