@@ -44,7 +44,7 @@ namespace AllpayWeb.Controllers
                     oPayment.MerchantID = "2000132";
 
                     /* 基本參數 */
-                    oPayment.Send.ReturnURL = "http://test.puhu.com.tw/AllPayPaymentCallBack.aspx";
+                    oPayment.Send.ReturnURL = "http://yourcompany.com.tw/AllPayPaymentCallBack.aspx";
                     oPayment.Send.MerchantTradeNo = "001";
                     oPayment.Send.MerchantTradeDate = DateTime.Now;
                     oPayment.Send.TotalAmount = 1;
