@@ -43,7 +43,7 @@ namespace AllpayWeb.Controllers
                 {
                     /* 服務參數 */
                     oPayment.ServiceMethod = HttpMethod.HttpPOST;
-                    oPayment.ServiceURL = "https://vendor-stage.allpay.com.tw";
+                    oPayment.ServiceURL = "https://payment-stage.allpay.com.tw/Cashier/AioCheckOut/V2";
                     oPayment.HashKey = "5294y06JbISpM5x9";
                     oPayment.HashIV = "v77hoKGq4kWxNNIS";
                     oPayment.MerchantID = "2000132";
@@ -51,14 +51,14 @@ namespace AllpayWeb.Controllers
                     /* 基本參數 */
                     string hostname = this.Request.Url.Authority;
                     oPayment.Send.ReturnURL = $"http://{hostname}/Pay/AllPayPayment";
-                    oPayment.Send.MerchantTradeNo = "001";
+                    oPayment.Send.MerchantTradeNo = DateTime.Now.ToString("yyyyMMddHHmmss");
                     oPayment.Send.MerchantTradeDate = DateTime.Now;
                     oPayment.Send.TotalAmount = 1;
                     oPayment.Send.TradeDesc = "測試金流的描述 ABC";
                     oPayment.Send.Items.Add(new Item()
                     {
-                        Name = "iPhone6"
-                        , Price = 1
+                        Name = "iPhone6 Plus"
+                        , Price = 99
                         , Currency = "元"
                         , Quantity = 1
                         //, Unit = "組"
