@@ -1,0 +1,28 @@
+﻿<script typw="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<form method="post" action="https://logistics-stage.ecpay.com.tw/Express/map" id="ctl01">
+    <input type="hidden" id="MerchantID" value="2000933" class="__parameter" />
+    <input type="hidden" id="HashKey" value="XBERn1YOvpM9nfZc" class="__parameter" />
+    <input type="hidden" id="HashIV" value="h1ONHk4P4yqbl5LK" class="__parameter" />
+    <input type="hidden" id="MerchantTradeNo" value="Ecpay_1234" class="__parameter" />
+    <input type="hidden" id="LogisticsType" value="CVS" class="__parameter" />
+    <input type="hidden" id="LogisticsSubType" value="FAMIC2C" class="__parameter" />
+    <input type="hidden" id="IsCollection" value="N" class="__parameter" />
+    <input type="hidden" id="ServerReplyURL" value="http://localhost/Home/LogisticsReturn" class="__parameter" />
+    <input type="hidden" id="ExtraData" value="額外資訊" class="__parameter" />
+    <input type="hidden" id="Device" value="0" class="__parameter" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    $(document).ready(function () {
+        $(".__parameter").each(function (i) {
+            this.name = this.id;
+        });
+        $("input[type=hidden]:not(.__parameter)").each(function (i) {
+            $(this).remove();
+        });
+        $("form").attr("target", "_self");
+        $("form").submit();
+    });
+//]]>
+</script>

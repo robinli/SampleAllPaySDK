@@ -27,6 +27,9 @@ namespace AllpayWeb.Controllers
 
             return View();
         }
+
+        #region 線上金流
+        
         public ActionResult Pay()
         {
             string result = ProcessPayment();
@@ -50,7 +53,7 @@ namespace AllpayWeb.Controllers
 
                     /* 基本參數 */
                     string hostname = this.Request.Url.Authority;
-                    oPayment.Send.ReturnURL = $"http://{hostname}/Pay/AllPayPayment";
+                    oPayment.Send.ReturnURL = $"http://{hostname}/AllPayPayment/CallBack";
                     oPayment.Send.MerchantTradeNo = DateTime.Now.ToString("yyyyMMddHHmmss");
                     oPayment.Send.MerchantTradeDate = DateTime.Now;
                     oPayment.Send.TotalAmount = 1;
@@ -87,6 +90,47 @@ namespace AllpayWeb.Controllers
             return szHtml;
         }
 
+        #endregion
 
+        #region 電子地圖串接
+        /// <summary>
+        /// 開啟超商電子地圖
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult OpenMap()
+        {
+            string result = GeneratorHtmlforOpenMap();
+            return Content(result);
+        }
+
+        /// <summary>
+        /// 產生電子地圖串接的前端 HTML
+        /// </summary>
+        /// <returns></returns>
+        private string GeneratorHtmlforOpenMap()
+        {
+            //讀取範本修改參數
+            string hostname = this.Request.Url.Authority;
+            string fileContents = System.IO.File.ReadAllText(Server.MapPath(@"~/Content/OpenMap.html"));
+
+            return fileContents.Replace("http://localhost/Home/LogisticsReturn"
+                , $"http://{hostname}/Home/LogisticsReturn");
+        }
+
+        /// <summary>
+        /// 綠界回傳的資訊
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult LogisticsReturn()
+        {
+            string content = "";
+            foreach (string key in this.Request.Form.AllKeys)
+            {
+                string value = this.Request.Form[key];
+                content += $"{key}={value}<br/>";
+            }
+            return Content(content);
+        }
+        #endregion
     }
 }

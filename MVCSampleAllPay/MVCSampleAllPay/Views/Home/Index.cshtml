@@ -6,13 +6,16 @@
     <h1>歐付寶金流SDK</h1>
     <p class="lead">
 
-信用卡測試卡號 	4311-9522-2222-2222<br />
-信用卡測試安全碼 	222<br />
-信用卡測試有效年月 	請設定大於測試時間的年月。因為系統會判斷有效年月是否已過期，已過期則會回應刷卡失敗。<br />
+        信用卡測試卡號 	4311-9522-2222-2222<br />
+        信用卡測試安全碼 	222<br />
+        信用卡測試有效年月 	請設定大於測試時間的年月。因為系統會判斷有效年月是否已過期，已過期則會回應刷卡失敗。<br />
 
     </p>
 
-    @Html.ActionLink("Pay 進行付款", "Pay", "Home", null, new { @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("進行線上付款", "Pay", "Home", null, new { @class = "btn btn-primary btn-lg" })
+
+    @Html.ActionLink("開啟物流電子地圖", "OpenMap", "Home", null, new { @class = "btn btn-primary btn-lg" })
+
 </div>
 
 <div class="row">
